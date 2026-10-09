@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark" style="color-scheme: dark;"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>পাহাড়ী এগ্রো</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+<!-- ===================== CSS ===================== -->
+<style>
+:root{
+  --green:#2E7D32; --dark:#1B3A1E; --light:#F3F8EF; --orange:#F57C00; --text:#223; --muted:#5d6b5f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1050px;margin:0 auto;padding:0 18px}
+
+/* Navbar */
+header{background:var(--dark);position:sticky;top:0;z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{color:#fff;font-weight:700;font-size:1.4rem}
+.logo span{color:#9be37f}
+nav ul{list-style:none;display:flex;gap:6px}
+nav a{display:block;padding:8px 16px;color:#dfe9dc;border-radius:6px;font-weight:500}
+nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
+@media(max-width:720px){
+  .burger{display:block}
+  nav ul{display:none;position:absolute;top:60px;left:0;right:0;background:var(--dark);flex-direction:column;padding:8px 18px 16px}
+  nav ul.open{display:flex}
+}
+
+/* Hero slider */
+.hero{background:linear-gradient(180deg,#cfe8ff 0%,#f3f8ef 100%);padding:30px 0 40px}
+.slider{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;min-height:380px}
+@media(max-width:720px){.slider{grid-template-columns:1fr;min-height:0}}
+.pimg{height:300px;border-radius:20px;display:grid;place-items:center;font-size:8rem;position:relative;overflow:hidden}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.buy{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;padding:10px 26px;border-radius:8px;font-weight:700;font-size:1rem;border:0;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.buy:hover{filter:brightness(1.08)}
+.ptext h1{font-size:2.2rem;color:var(--dark);line-height:1.2}
+.ptext h2{font-size:1.2rem;color:var(--orange);margin:6px 0 12px}
+.ptext p{color:var(--muted);max-width:46ch}
+.price{font-size:1.6rem;font-weight:700;color:var(--green);margin-top:14px}
+.arrow{position:absolute;top:140px;background:rgba(255,255,255,.85);border:0;width:42px;height:42px;border-radius:50%;font-size:1.4rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.arrow.prev{left:-6px}.arrow.next{right:-6px}
+@media(max-width:720px){.arrow{top:130px}}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.dots button{width:11px;height:11px;border-radius:50%;border:0;background:#b9c9b5;cursor:pointer}
+.dots button.on{background:var(--green)}
+
+/* Sections */
+section{padding:50px 0}
+section h2.title{font-size:1.9rem;color:var(--dark);margin-bottom:22px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.card{border:1px solid #dde7d8;border-radius:16px;overflow:hidden;background:#fff}
+.card .pimg{height:160px;font-size:4.5rem;border-radius:0}
+.card .body{padding:14px 16px 18px}
+.card h3{font-size:1.15rem}
+.card p{color:var(--muted);font-size:.93rem;min-height:44px}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.card .row b{color:var(--green);font-size:1.15rem}
+.card button{background:var(--orange);color:#fff;border:0;padding:8px 16px;border-radius:8px;font:inherit;font-weight:500;cursor:pointer}
+
+/* About */
+.about{background:var(--light)}
+.about .box{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;max-width:800px;margin:0 auto}
+@media(max-width:600px){.about .box{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.avatar{width:140px;height:140px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:3rem;font-weight:700}
+.about h3{font-size:1.4rem;color:var(--dark)}
+.about p{color:var(--muted);margin-top:8px}
+
+/* Contact */
+.contact{text-align:center}
+.contact p{color:var(--muted);margin-bottom:8px}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:12px 26px;border-radius:999px;font-weight:700;margin:6px}
+.btn.wa{background:#25D366}
+footer{background:var(--dark);color:#b9cdb5;text-align:center;padding:20px;font-size:.9rem}
+
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--orange);color:#fff;border:0;padding:12px 22px;border-radius:999px;font:inherit;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:pointer}
+dialog{width:min(560px,94vw);max-height:90vh;border:0;border-radius:18px;padding:0;font-family:inherit}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.ed{padding:20px;display:grid;gap:10px}
+.ed h2{color:var(--dark)}
+.ed label{display:grid;gap:3px;font-weight:500;font-size:.9rem}
+.ed input,.ed textarea{font:inherit;padding:9px 11px;border-radius:9px;border:1.5px solid #cfd9cb;width:100%}
+.prow{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;border:1px solid #dde7d8;border-radius:12px}
+.prow .w{grid-column:1/-1}
+.sm{background:none;border:0;color:var(--green);font:inherit;font-weight:700;cursor:pointer;text-align:left;padding:4px 0}
+.bar{display:flex;gap:8px;position:sticky;bottom:0;background:#fff;padding-top:8px}
+.bar button{padding:11px 22px;border-radius:999px;border:0;font:inherit;font-weight:700;cursor:pointer;background:var(--green);color:#fff}
+.bar button.x{background:#e4ebe1;color:var(--dark)}
+#msg{color:var(--muted);font-size:.9rem}
+</style>
+</head>
+
+<!-- ===================== HTML ===================== -->
+<body>
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="logo">পাহাড়ী <span>এগ্রো</span></a>
+    <button class="burger" id="burger" aria-label="মেনু">☰</button>
+    <nav><ul id="menu">
+      <li><a href="#home">হোম</a></li>
+      <li><a href="#about">আমাদের সম্পর্কে</a></li>
+      <li><a href="#store">পণ্যসমূহ</a></li>
+      <li><a href="#contact">যোগাযোগ</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home" style="padding-top:30px">
+    <div class="wrap">
+      <div class="slider">
+        <button class="arrow prev" id="prev" aria-label="আগের">‹</button>
+        <div class="pimg" id="sImg"><button class="buy" id="sBuy">এখনই কিনুন</button></div>
+        <div class="ptext">
+          <h1 id="sName">শুকনা মরিচ</h1>
+          <h2 id="sSlogan">ঝালে ভরপুর</h2>
+          <p id="sDesc">পাহাড়ী মরিচ রোদে শুকিয়ে বাছাই করা, ঝাল ও সুগন্ধে ভরা।</p>
+          <div class="price" id="sPrice">৳৪৫০ / কেজি</div>
+        </div>
+        <button class="arrow next" id="next" aria-label="পরের">›</button>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <section id="store">
+    <div class="wrap">
+      <h2 class="title">আমাদের পণ্যসমূহ</h2>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2 class="title">মালিক পরিচিতি</h2>
+      <div class="box">
+        <div class="avatar" id="avatar">আ</div>
+        <div>
+          <h3 id="ownerName">আপনার নাম</h3>
+          <p id="ownerBio">এখানে নিজের সম্পর্কে ২-৩ লাইন লিখুন: কীভাবে শুরু করেছেন, পাহাড়ের কৃষকদের কাছ থেকে কীভাবে খাঁটি পণ্য সংগ্রহ করেন।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2 class="title">যোগাযোগ করুন</h2>
+      <p id="addr">রাঙ্গামাটি, পার্বত্য চট্টগ্রাম, বাংলাদেশ</p>
+      <a class="btn wa" id="waBtn" target="_blank" rel="noopener" href="https://wa.me/8801700000000">হোয়াটসঅ্যাপে মেসেজ করুন</a>
+      <a class="btn" id="callBtn" href="tel:+8801700000000">কল করুন</a>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr">২০২৬</span> পাহাড়ী এগ্রো। সর্বস্বত্ব সংরক্ষিত।</footer>
+
+<script type="application/json" id="site-data">{"phone":"8801312477163","address":"আদমদীঘি, বগুড়া , বাংলাদেশ","owner":"শুভ মন্ডল","bio":"আমি শুভ মণ্ডল, একজন স্বপ্নবাজ ও প্রযুক্তিপ্রেমী মানুষ। নতুন কিছু শেখা, সৃজনশীল চিন্তাভাবনা এবং প্রযুক্তির মাধ্যমে বাস্তবসম্মত সমস্যার সমাধান করতে আমি ভালোবাসি। প্রতিনিয়ত নিজের দক্ষতা উন্নত করা এবং নতুন অভিজ্ঞতা অর্জন করাই আমার লক্ষ্য। আমি বিশ্বাস করি, পরিশ্রম, সৃজনশীলতা ও শেখার আগ্রহই সাফল্যের মূল চাবিকাঠি।","products":[{"name":"পাহাড়ী খাঁটি মধু","price":850,"unit":"কেজি","slogan":"পাহাড়ের ফুলের নির্যাস","desc":"পার্বত্য অঞ্চলের বন থেকে সংগৃহীত ১০০% খাঁটি মধু। কোনো ভেজাল বা চিনি নেই।","emoji":"🍯","color":"#FFE082"},{"name":"হলুদ গুঁড়া","price":320,"unit":"৫০০ গ্রাম","slogan":"রঙে ও স্বাদে অতুলনীয়","desc":"পাহাড়ী জমির কাঁচা হলুদ থেকে তৈরি, রোদে শুকানো ও ঘরে পেষা।","emoji":"🌿","color":"#FFCC80"},{"name":"পাহাড়ী আদা","price":180,"unit":"কেজি","slogan":"ঝাঁঝালো ও তাজা","desc":"রাসায়নিক ছাড়া চাষ করা মোটা ও রসালো আদা।","emoji":"🫚","color":"#D7CCC8"},{"name":"আনারস","price":60,"unit":"পিস","slogan":"মিষ্টি ও রসে ভরা","desc":"পাহাড়ের রোদে পাকা সুমিষ্ট আনারস, সরাসরি বাগান থেকে।","emoji":"🍍","color":"#FFF59D"},{"name":"কলা","price":80,"unit":"ডজন","slogan":"পাহাড়ের সেরা স্বাদ","desc":"প্রাকৃতিকভাবে পাকা, কার্বাইডমুক্ত সুস্বাদু কলা।","emoji":"🍌","color":"#FFF9C4"},{"name":"শুকনা মরিচ","price":450,"unit":"কেজি","slogan":"ঝালে ভরপুর","desc":"পাহাড়ী মরিচ রোদে শুকিয়ে বাছাই করা, ঝাল ও সুগন্ধে ভরা।","emoji":"🌶️","color":"#FFAB91"}]}</script>
+<script>
+const SITE = JSON.parse(document.getElementById("site-data").textContent);
+
+/* ---- নিচের কোড বদলানোর দরকার নেই ---- */
+const $ = id => document.getElementById(id);
+const bn = n => Number(n).toLocaleString("bn-BD");
+const orderLink = p => "https://wa.me/" + SITE.phone + "?text=" +
+  encodeURIComponent("আসসালামু আলাইকুম, আমি \"" + p.name + "\" অর্ডার করতে চাই।");
+
+function visual(el, p){          // ছবি থাকলে ছবি, না থাকলে ইমোজি
+  el.style.background = p.color;
+  if (p.image) { el.insertAdjacentHTML("afterbegin", '<img src="'+p.image+'" alt="'+p.name+'">'); }
+  else { el.insertAdjacentText("afterbegin", p.emoji); }
+}
+
+/* Slider */
+let cur = 0, timer;
+const dots = $("dots");
+SITE.products.forEach((_, i) => {
+  const b = document.createElement("button");
+  b.setAttribute("aria-label", "স্লাইড " + (i+1));
+  b.onclick = () => { show(i); restart(); };
+  dots.appendChild(b);
+});
+function show(i){
+  cur = (i + SITE.products.length) % SITE.products.length;
+  const p = SITE.products[cur], img = $("sImg"), buy = $("sBuy");
+  [...img.childNodes].forEach(n => { if (n !== buy) n.remove(); });
+  visual(img, p);
+  $("sName").textContent = p.name;
+  $("sSlogan").textContent = p.slogan;
+  $("sDesc").textContent = p.desc;
+  $("sPrice").textContent = "৳" + bn(p.price) + " / " + p.unit;
+  buy.onclick = () => window.open(orderLink(p), "_blank");
+  [...dots.children].forEach((d, k) => d.classList.toggle("on", k === cur));
+}
+function restart(){ clearInterval(timer); timer = setInterval(() => show(cur+1), 5000); }
+$("prev").onclick = () => { show(cur-1); restart(); };
+$("next").onclick = () => { show(cur+1); restart(); };
+show(0); restart();
+
+/* Product grid */
+SITE.products.forEach(p => {
+  const c = document.createElement("article");
+  c.className = "card";
+  c.innerHTML = '<div class="pimg"></div><div class="body"><h3></h3><p></p><div class="row"><b></b><button>কিনুন</button></div></div>';
+  visual(c.querySelector(".pimg"), p);
+  c.querySelector("h3").textContent = p.name;
+  c.querySelector("p").textContent = p.desc;
+  c.querySelector("b").textContent = "৳" + bn(p.price) + " / " + p.unit;
+  c.querySelector("button").onclick = () => window.open(orderLink(p), "_blank");
+  $("grid").appendChild(c);
+});
+
+/* Owner, contact, menu */
+$("ownerName").textContent = SITE.owner;
+$("ownerBio").textContent = SITE.bio;
+$("avatar").textContent = SITE.owner.trim().charAt(0);
+$("addr").textContent = SITE.address;
+$("waBtn").href = "https://wa.me/" + SITE.phone;
+$("callBtn").href = "tel:+" + SITE.phone;
+$("yr").textContent = bn(new Date().getFullYear()).replace(/,/g, "");
+$("burger").onclick = () => $("menu").classList.toggle("open");
+$("menu").onclick = e => { if (e.target.tagName === "A") $("menu").classList.remove("open"); };
+
+/* ===== শুধু মালিকের জন্য এডিটর ===== */
+(async()=>{
+  let user=null,art=null;
+  try{user=await claude.use("user");art=await claude.use("artifact");}catch(e){}
+  if(!user||!art||!user.isOwner())return;
+  const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const fab=document.createElement("button");fab.className="fab";fab.textContent="✎ সম্পাদনা";fab.dataset.editUi="1";
+  const dlg=document.createElement("dialog");dlg.dataset.editUi="1";
+  document.body.append(fab,dlg);
+  const inp=(id,l,v)=>`<label>${l}<input id="${id}" value="${esc(v)}"></label>`;
+  const prow=p=>`<div class="prow" data-color="${esc(p.color||"#C8E6C9")}" data-image="${esc(p.image||"")}"><input class="w" placeholder="পণ্যের নাম" value="${esc(p.name)}"><input placeholder="দাম (সংখ্যায়)" inputmode="numeric" value="${esc(p.price)}"><input placeholder="একক (কেজি/পিস)" value="${esc(p.unit)}"><input class="w" placeholder="স্লোগান" value="${esc(p.slogan)}"><input class="w" placeholder="বিবরণ" value="${esc(p.desc)}"><input placeholder="ইমোজি" value="${esc(p.emoji)}"><button type="button" class="sm" data-rm>মুছে ফেলুন</button></div>`;
+  function open(){
+    dlg.innerHTML=`<div class="ed"><h2>সাইট সম্পাদনা</h2>
+    ${inp("e_phone","হোয়াটসঅ্যাপ নম্বর (দেশের কোডসহ, যেমন 8801700000000)",SITE.phone)}${inp("e_addr","ঠিকানা",SITE.address)}
+    <b>পণ্যসমূহ</b><div id="plist">${SITE.products.map(prow).join("")}</div><button type="button" class="sm" id="addp">+ নতুন পণ্য</button>
+    <b>মালিক পরিচিতি</b>${inp("e_owner","আপনার নাম",SITE.owner)}<label>সংক্ষিপ্ত পরিচয়<textarea id="e_bio" rows="3">${esc(SITE.bio)}</textarea></label>
+    <p id="msg"></p><div class="bar"><button id="save">সেভ ও পাবলিশ</button><button class="x" id="cancel">বাতিল</button></div></div>`;
+    dlg.showModal();
+    $("addp").onclick=()=>$("plist").insertAdjacentHTML("beforeend",prow({name:"",slogan:"",desc:"",price:"",unit:"",emoji:"🌱"}));
+    $("plist").onclick=e=>{if(e.target.dataset.rm!==undefined)e.target.closest(".prow").remove()};
+    $("cancel").onclick=()=>dlg.close();
+    $("save").onclick=save;
+  }
+  async function save(){
+    const prods=[...document.querySelectorAll("#plist .prow")].map(r=>{const v=r.querySelectorAll("input");const o={name:v[0].value.trim(),price:Number(v[1].value.replace(/[^0-9.]/g,""))||0,unit:v[2].value.trim(),slogan:v[3].value.trim(),desc:v[4].value.trim(),emoji:v[5].value.trim()||"🌱",color:r.dataset.color};if(r.dataset.image)o.image=r.dataset.image;return o}).filter(p=>p.name);
+    const D={phone:$("e_phone").value.replace(/[^0-9]/g,""),address:$("e_addr").value.trim(),owner:$("e_owner").value.trim()||"মালিক",bio:$("e_bio").value.trim(),products:prods.length?prods:SITE.products};
+    $("msg").textContent="পাবলিশ হচ্ছে...";
+    const c=document.documentElement.cloneNode(true);
+    c.querySelectorAll("[data-edit-ui]").forEach(n=>n.remove());
+    c.querySelector("#grid").innerHTML="";c.querySelector("#dots").innerHTML="";
+    const si=c.querySelector("#sImg");si.removeAttribute("style");si.innerHTML='<button class="buy" id="sBuy">এখনই কিনুন</button>';
+    c.querySelector("#site-data").textContent=JSON.stringify(D).replace(/</g,"\\u003c");
+    try{await art.publish("<!DOCTYPE html>\n"+c.outerHTML);}
+    catch(e){$("msg").textContent="পাবলিশ করা যায়নি: "+(e&&e.message||e.code||"আবার চেষ্টা করুন");}
+  }
+  fab.onclick=open;
+})();
+</script>
+
+
+</body></html>
