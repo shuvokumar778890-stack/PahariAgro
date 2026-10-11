@@ -1,270 +1,821 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="dark" style="color-scheme: dark;"><head>
-<meta charset="utf-8">
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>পাহাড়ী এগ্রো</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&amp;display=swap" rel="stylesheet">
-
-<!-- ===================== CSS ===================== -->
-<style>
-:root{
-  --green:#2E7D32; --dark:#1B3A1E; --light:#F3F8EF; --orange:#F57C00; --text:#223; --muted:#5d6b5f;
+<title>পাহাড়ী এগ্রো | Pahari Agro</title>
+<meta name="description" content="পাহাড়ী এগ্রো — পাহাড় ও সমতলের প্রাকৃতিক সম্পদ নিয়ে নির্বাচিত ও মানসম্মত কৃষিপণ্যের প্রদর্শনী।">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;800&display=swap" rel="stylesheet">
+<style id="app-css">:root{
+  --bg:#fbf6e9; --bg-2:#f3ecd6; --surface:#ffffff; --text:#1c2b21; --muted:#4a5b50;
+  --heading:#14532d; --accent:#3f9142; --accent-soft:#e3efdb; --gold:#e0a526; --gold-text:#8f6107;
+  --line:rgba(20,83,45,.14); --hero-ov:251,246,233; --btn:#14532d; --btn-hover:#0d3b20; --btn-text:#ffffff;
+  --chip-bg:#fdf0cc; --wa:#128c4a; --shadow:0 4px 18px rgba(20,83,45,.10); --shadow-lift:0 10px 28px rgba(20,83,45,.16);
+  --logo-front:#14532d; --logo-back:#3f9142; --logo-snow:#fbf6e9; --hero-filter:none;
+  --font-body:"Hind Siliguri","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-display:"Noto Serif Bengali","Hind Siliguri",Georgia,serif;
+  --wrap:1160px; --header-h:68px; --radius:16px; --radius-lg:24px;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"Hind Siliguri",system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.6}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1050px;margin:0 auto;padding:0 18px}
-
-/* Navbar */
-header{background:var(--dark);position:sticky;top:0;z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{color:#fff;font-weight:700;font-size:1.4rem}
-.logo span{color:#9be37f}
-nav ul{list-style:none;display:flex;gap:6px}
-nav a{display:block;padding:8px 16px;color:#dfe9dc;border-radius:6px;font-weight:500}
-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
-.burger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
-@media(max-width:720px){
-  .burger{display:block}
-  nav ul{display:none;position:absolute;top:60px;left:0;right:0;background:var(--dark);flex-direction:column;padding:8px 18px 16px}
-  nav ul.open{display:flex}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a12; --bg-2:#132319; --surface:#172a1e; --text:#e9f2e3; --muted:#a8bfaa;
+    --heading:#cdeab8; --accent:#7fcf86; --accent-soft:#1f3a27; --gold-text:#f0c660;
+    --line:rgba(255,255,255,.14); --hero-ov:14,26,18; --btn:#2f7d34; --btn-hover:#3f9142; --btn-text:#ffffff;
+    --chip-bg:#3a2f10; --wa:#128c4a; --shadow:0 4px 18px rgba(0,0,0,.35); --shadow-lift:0 10px 28px rgba(0,0,0,.5);
+    --logo-front:#9bd48a; --logo-back:#4fae56; --logo-snow:#0e1a12; --hero-filter:brightness(.8);
+  }
 }
+:root[data-theme="dark"]{
+  --bg:#0e1a12; --bg-2:#132319; --surface:#172a1e; --text:#e9f2e3; --muted:#a8bfaa;
+  --heading:#cdeab8; --accent:#7fcf86; --accent-soft:#1f3a27; --gold-text:#f0c660;
+  --line:rgba(255,255,255,.14); --hero-ov:14,26,18; --btn:#2f7d34; --btn-hover:#3f9142; --btn-text:#ffffff;
+  --chip-bg:#3a2f10; --wa:#128c4a; --shadow:0 4px 18px rgba(0,0,0,.35); --shadow-lift:0 10px 28px rgba(0,0,0,.5);
+  --logo-front:#9bd48a; --logo-back:#4fae56; --logo-snow:#0e1a12; --hero-filter:brightness(.8);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px) + 8px);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-body);font-size:1.0625rem;line-height:1.75;color:var(--text);background:var(--bg)}
+img,svg{max-width:100%} img{display:block;height:auto}
+a{color:inherit} h1,h2,h3,p,ul{margin:0} ul{padding:0;list-style:none}
+[hidden]{display:none !important}
+.wrap{width:min(100% - 2rem,var(--wrap));margin-inline:auto}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.skip-link{position:absolute;left:1rem;top:-4rem;z-index:100;background:var(--btn);color:#fff;padding:.6rem 1rem;border-radius:10px;text-decoration:none}
+.skip-link:focus{top:1rem}
 
-/* Hero slider */
-.hero{background:linear-gradient(180deg,#cfe8ff 0%,#f3f8ef 100%);padding:30px 0 40px}
-.slider{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;min-height:380px}
-@media(max-width:720px){.slider{grid-template-columns:1fr;min-height:0}}
-.pimg{height:300px;border-radius:20px;display:grid;place-items:center;font-size:8rem;position:relative;overflow:hidden}
-.pimg img{width:100%;height:100%;object-fit:cover}
-.buy{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;padding:10px 26px;border-radius:8px;font-weight:700;font-size:1rem;border:0;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-.buy:hover{filter:brightness(1.08)}
-.ptext h1{font-size:2.2rem;color:var(--dark);line-height:1.2}
-.ptext h2{font-size:1.2rem;color:var(--orange);margin:6px 0 12px}
-.ptext p{color:var(--muted);max-width:46ch}
-.price{font-size:1.6rem;font-weight:700;color:var(--green);margin-top:14px}
-.arrow{position:absolute;top:140px;background:rgba(255,255,255,.85);border:0;width:42px;height:42px;border-radius:50%;font-size:1.4rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.arrow.prev{left:-6px}.arrow.next{right:-6px}
-@media(max-width:720px){.arrow{top:130px}}
-.dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
-.dots button{width:11px;height:11px;border-radius:50%;border:0;background:#b9c9b5;cursor:pointer}
-.dots button.on{background:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:.6rem 1.35rem;border-radius:999px;font:600 1.02rem/1.2 var(--font-body);text-decoration:none;border:0;cursor:pointer;transition:background-color .2s,transform .2s}
+.btn svg{width:22px;height:22px;flex:none}
+.btn .arrow{width:16px;height:16px;transition:transform .2s}
+.btn:hover .arrow{transform:translateX(3px)}
+.btn-primary{background:var(--btn);color:var(--btn-text);box-shadow:0 6px 16px rgba(20,83,45,.28)}
+.btn-primary:hover{background:var(--btn-hover)}
+.btn-soft{background:var(--accent-soft);color:var(--heading)}
+.btn-soft:hover{filter:brightness(.96)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{filter:brightness(1.08)}
+.btn-sm{min-height:44px;padding:.45rem 1.1rem;font-size:.98rem}
 
-/* Sections */
-section{padding:50px 0}
-section h2.title{font-size:1.9rem;color:var(--dark);margin-bottom:22px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
-.card{border:1px solid #dde7d8;border-radius:16px;overflow:hidden;background:#fff}
-.card .pimg{height:160px;font-size:4.5rem;border-radius:0}
-.card .body{padding:14px 16px 18px}
-.card h3{font-size:1.15rem}
-.card p{color:var(--muted);font-size:.93rem;min-height:44px}
-.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
-.card .row b{color:var(--green);font-size:1.15rem}
-.card button{background:var(--orange);color:#fff;border:0;padding:8px 16px;border-radius:8px;font:inherit;font-weight:500;cursor:pointer}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:var(--header-h);background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:box-shadow .25s}
+.site-header.is-scrolled{box-shadow:0 2px 14px rgba(0,0,0,.14)}
+.header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:inline-flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--heading)}
+.brand .logo{width:54px;height:45px;flex:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-bn{font:800 1.5rem/1.15 var(--font-display)}
+.brand-en{font:600 .7rem/1.2 var(--font-body);letter-spacing:.3em;color:var(--accent)}
+.primary-nav ul{display:flex;gap:.25rem}
+.primary-nav a{display:inline-flex;align-items:center;min-height:44px;padding:.4rem .95rem;font-weight:500;text-decoration:none;border-bottom:3px solid transparent;transition:color .2s}
+.primary-nav a:hover{color:var(--accent)}
+.primary-nav a.is-active{color:var(--heading);border-bottom-color:var(--heading);font-weight:600}
+.nav-toggle{display:none;width:48px;height:48px;border:0;border-radius:12px;background:var(--accent-soft);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.nav-toggle .bar{width:22px;height:3px;border-radius:2px;background:var(--heading);transition:transform .25s,opacity .2s}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* About */
-.about{background:var(--light)}
-.about .box{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:center;max-width:800px;margin:0 auto}
-@media(max-width:600px){.about .box{grid-template-columns:1fr;text-align:center;justify-items:center}}
-.avatar{width:140px;height:140px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:3rem;font-weight:700}
-.about h3{font-size:1.4rem;color:var(--dark)}
-.about p{color:var(--muted);margin-top:8px}
+.hero{position:relative;min-height:clamp(460px,62vh,620px);display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:#dcead2 center/cover no-repeat;filter:var(--hero-filter)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(var(--hero-ov),.93) 0%,rgba(var(--hero-ov),.78) 38%,rgba(var(--hero-ov),0) 72%)}
+.hero-inner{position:relative;padding-block:3rem}
+.hero-copy{max-width:600px}
+.hero-title{font:800 clamp(2.2rem,5.6vw,3.6rem)/1.28 var(--font-display);color:var(--heading)}
+.hero-title span{display:block}
+.hero-title .t2{color:var(--gold-text)}
+.hero-text{margin:1.1rem 0 1.8rem;max-width:34em;font-size:1.15rem}
+.hero-title,.hero-text,#hero-cta{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-text{animation-delay:.12s} #hero-cta{animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-/* Contact */
-.contact{text-align:center}
-.contact p{color:var(--muted);margin-bottom:8px}
-.btn{display:inline-block;background:var(--green);color:#fff;padding:12px 26px;border-radius:999px;font-weight:700;margin:6px}
-.btn.wa{background:#25D366}
-footer{background:var(--dark);color:#b9cdb5;text-align:center;padding:20px;font-size:.9rem}
+.values-strip{background:var(--bg-2);padding:1.4rem 0}
+.values-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem 1.5rem}
+.values-list li,.mission-list li,.contact-list li{display:flex;align-items:flex-start;gap:.85rem}
+.values-list strong,.mission-list strong,.contact-list strong{display:block;font-weight:600;color:var(--heading);line-height:1.4}
+.values-list span:not(.value-icon),.mission-list span:not(.value-icon),.contact-list span:not(.value-icon){display:block;font-size:.95rem;color:var(--muted);line-height:1.5}
+.value-icon{flex:none;width:52px;height:52px;border-radius:50%;background:var(--accent-soft);color:var(--heading);display:grid;place-items:center}
+.value-icon svg{width:26px;height:26px}
 
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--orange);color:#fff;border:0;padding:12px 22px;border-radius:999px;font:inherit;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:pointer}
-dialog{width:min(560px,94vw);max-height:90vh;border:0;border-radius:18px;padding:0;font-family:inherit}
-dialog::backdrop{background:rgba(0,0,0,.55)}
-.ed{padding:20px;display:grid;gap:10px}
-.ed h2{color:var(--dark)}
-.ed label{display:grid;gap:3px;font-weight:500;font-size:.9rem}
-.ed input,.ed textarea{font:inherit;padding:9px 11px;border-radius:9px;border:1.5px solid #cfd9cb;width:100%}
-.prow{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;border:1px solid #dde7d8;border-radius:12px}
-.prow .w{grid-column:1/-1}
-.sm{background:none;border:0;color:var(--green);font:inherit;font-weight:700;cursor:pointer;text-align:left;padding:4px 0}
-.bar{display:flex;gap:8px;position:sticky;bottom:0;background:#fff;padding-top:8px}
-.bar button{padding:11px 22px;border-radius:999px;border:0;font:inherit;font-weight:700;cursor:pointer;background:var(--green);color:#fff}
-.bar button.x{background:#e4ebe1;color:var(--dark)}
-#msg{color:var(--muted);font-size:.9rem}
+.section{padding:clamp(3rem,7vw,5rem) 0}
+.section-tint{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.section-title{display:flex;align-items:center;gap:.55rem;font:800 clamp(1.7rem,3.6vw,2.2rem)/1.3 var(--font-display);color:var(--heading)}
+.title-leaf{width:30px;height:30px;color:var(--accent);flex:none}
+.section-sub{color:var(--muted)}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:1.4rem}
+.product-grid>.product-card{max-width:420px;width:100%}
+.product-card{background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s}
+.product-card:hover{box-shadow:var(--shadow-lift);transform:translateY(-3px)}
+.product-media{aspect-ratio:4/3;background:var(--accent-soft);overflow:hidden;display:grid;place-items:center}
+.product-media img{width:100%;height:100%;object-fit:cover}
+.product-media .emoji{font-size:5.5rem;line-height:1}
+.product-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.product-body h3{font:700 1.3rem/1.4 var(--font-display);color:var(--heading)}
+.product-body p{color:var(--muted);font-size:.98rem;line-height:1.65;flex:1}
+.product-body .btn{margin-top:.7rem;align-self:stretch;justify-content:center;text-align:center}
+.chip{align-self:flex-start;padding:.1rem .7rem;border-radius:999px;background:var(--chip-bg);color:var(--gold-text);font-size:.85rem;font-weight:600}
+.state-box{grid-column:1/-1;text-align:center;padding:2.5rem 1rem;color:var(--muted);background:var(--surface);border-radius:var(--radius)}
+
+.about-grid{display:grid;gap:2rem 2.5rem;grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center}
+.owner-photo{margin:0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lift);aspect-ratio:5/4;background:var(--accent-soft)}
+.owner-photo img{width:100%;height:100%;object-fit:cover}
+.about-copy .section-title{margin-bottom:.8rem}
+.owner-card{margin-top:1.2rem;padding-left:1rem;border-left:4px solid var(--gold)}
+.owner-name{font:700 1.3rem/1.4 var(--font-display);color:var(--heading)}
+.owner-role{font-size:.95rem;color:var(--muted)}
+.owner-bio{margin-top:.4rem}
+.mission-panel{grid-column:1/-1;background:var(--surface);border-radius:var(--radius-lg);padding:1.6rem;box-shadow:var(--shadow)}
+.mission-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem 1.8rem}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));grid-auto-rows:190px;grid-auto-flow:dense;gap:.9rem}
+.g-item{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;background:var(--accent-soft);box-shadow:var(--shadow)}
+.g-item:nth-child(5n+1){grid-column:span 2}
+.g-btn{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.g-item:hover img{transform:scale(1.05)}
+.g-item figcaption{position:absolute;inset:auto 0 0 0;padding:1.4rem .9rem .6rem;font-size:.92rem;color:#fff;background:linear-gradient(180deg,transparent,rgba(13,59,32,.82));pointer-events:none}
+.lightbox{width:min(94vw,900px);max-height:92vh;padding:0;border:0;border-radius:var(--radius);background:#0d3b20;color:#fff;overflow:hidden}
+.lightbox::backdrop{background:rgba(0,0,0,.75)}
+.lightbox img{width:100%;max-height:74vh;object-fit:contain;background:#0a2d18}
+.lightbox p{padding:.8rem 1.2rem 1rem}
+.lightbox-close{position:absolute;top:.5rem;right:.5rem;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer}
+
+.contact-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:1.6rem}
+.contact-grid.single{grid-template-columns:1fr}
+.contact-box,.social-box{background:var(--surface);border-radius:var(--radius-lg);padding:1.5rem;box-shadow:var(--shadow)}
+.contact-list{display:grid;gap:1.2rem}
+.contact-list a{color:var(--heading);font-weight:500;overflow-wrap:anywhere}
+.contact-list span:not(.value-icon){overflow-wrap:anywhere}
+.contact-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.social-title{font:700 1.2rem/1.4 var(--font-display);color:var(--heading);margin-bottom:1rem}
+.social-row{display:flex;flex-wrap:wrap;gap:.75rem}
+.social{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .2s}
+.social svg{width:26px;height:26px} .social:hover{transform:translateY(-2px)}
+.social[data-s="facebook"]{background:#1877f2} .social[data-s="youtube"]{background:#c40000}
+.social[data-s="instagram"]{background:linear-gradient(135deg,#f9a03f,#d62976 55%,#5b51d8)}
+.social-row-light .social{width:44px;height:44px} .social-row-light .social svg{width:22px;height:22px}
+
+.site-footer{background:linear-gradient(180deg,#14532d 0%,#0d3b20 100%);color:#e8f1e1;--logo-front:#cdeab8;--logo-back:#4fae56;--logo-snow:#0d3b20;--heading:#fff;--accent:#cfe8b8}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1.3fr 1fr;gap:2rem;padding-block:3rem 2rem}
+.footer-tagline{margin-top:.8rem;color:#cfe8b8}
+.footer-col h2{font:700 1.1rem/1.4 var(--font-display);color:#fff;margin-bottom:.8rem}
+.footer-links a{display:inline-block;padding:.25rem 0;color:#e8f1e1;text-decoration:none}
+.footer-links a:hover{color:var(--gold);text-decoration:underline}
+.footer-contact{display:grid;gap:.6rem}
+.footer-contact li{display:flex;gap:.6rem;align-items:flex-start;overflow-wrap:anywhere}
+.footer-contact svg{width:20px;height:20px;flex:none;margin-top:.3rem;color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.14);padding:1rem 0;font-size:.92rem;color:#b9d3ad;text-align:center}
+
+/* ----- মালিকের সম্পাদনা (শুধু মালিক দেখবেন) ----- */
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--gold);color:#1c2b21;border:0;padding:.8rem 1.3rem;min-height:48px;border-radius:999px;font:700 1rem var(--font-body);box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:pointer}
+dialog.editor{width:min(640px,96vw);max-height:92vh;border:0;border-radius:18px;padding:0;background:var(--surface);color:var(--text);font-family:var(--font-body)}
+dialog.editor::backdrop{background:rgba(0,0,0,.6)}
+.ed{display:flex;flex-direction:column;max-height:92vh}
+.ed-body{padding:1.1rem 1.1rem .5rem;overflow-y:auto;display:grid;gap:.7rem}
+.ed h2{font:800 1.3rem/1.3 var(--font-display);color:var(--heading)}
+.ed details{border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.ed summary{cursor:pointer;padding:.8rem 1rem;font-weight:700;color:var(--heading);min-height:48px;display:flex;align-items:center}
+.ed .sec{padding:.3rem 1rem 1rem;display:grid;gap:.7rem}
+.ed label{display:grid;gap:.2rem;font-weight:500;font-size:.92rem}
+.ed input[type=text],.ed input[type=tel],.ed input[type=email],.ed input[type=url],.ed textarea{font:inherit;color:inherit;background:var(--surface);padding:.6rem .7rem;border-radius:10px;border:1.5px solid var(--line);width:100%;min-height:44px}
+.ed textarea{resize:vertical;min-height:84px}
+.ed .hint{font-size:.85rem;color:var(--muted)}
+.ed .row{display:grid;gap:.5rem;padding:.8rem;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.ed .row-actions{display:flex;flex-wrap:wrap;gap:.4rem}
+.ed .pick{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.ed .thumb{width:84px;height:64px;border-radius:10px;object-fit:cover;background:var(--accent-soft);display:grid;place-items:center;font-size:2rem;overflow:hidden}
+.ed .thumb img{width:100%;height:100%;object-fit:cover}
+.ed .chk{display:flex;align-items:center;gap:.5rem;min-height:44px}
+.ed .chk input{width:22px;height:22px}
+.ed button,.ed .filebtn{font:600 .95rem var(--font-body);min-height:44px;padding:.45rem 1rem;border-radius:999px;border:0;cursor:pointer;background:var(--accent-soft);color:var(--heading);display:inline-flex;align-items:center}
+.ed .danger{background:#fde4e0;color:#8a1c10}
+.ed .danger.sure{background:#b3261e;color:#fff}
+.ed .ghost{background:transparent;border:1.5px dashed var(--accent);color:var(--heading)}
+.ed .filebtn input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.ed .g-edit{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.ed .g-card{display:grid;gap:.4rem;padding:.5rem;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.ed .g-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+.ed-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:.8rem 1.1rem calc(.8rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--surface)}
+.ed-bar .save{background:var(--btn);color:#fff}
+.ed-msg{flex:1 1 100%;font-size:.92rem;margin:0;min-height:1.4em}
+.ed-msg.ok{color:#1b7a33} .ed-msg.err{color:#b3261e}
+
+@media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.about-grid,.contact-grid{grid-template-columns:1fr}}
+@media (max-width:820px){
+  .nav-toggle{display:inline-flex}
+  .primary-nav{position:absolute;top:var(--header-h);left:0;right:0;background:var(--bg);box-shadow:0 12px 20px rgba(0,0,0,.18);padding:.5rem 1rem 1rem;display:none}
+  .primary-nav.is-open{display:block}
+  .primary-nav ul{flex-direction:column;gap:0}
+  .primary-nav a{width:100%;padding:.7rem .5rem;border-bottom:1px solid var(--line)}
+}
+@media (max-width:640px){
+  :root{--header-h:62px} body{font-size:1rem}
+  .brand .logo{width:44px;height:37px} .brand-bn{font-size:1.3rem} .brand-en{font-size:.6rem;letter-spacing:.25em}
+  .hero{min-height:520px;align-items:flex-start}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(var(--hero-ov),.95) 0%,rgba(var(--hero-ov),.78) 55%,rgba(var(--hero-ov),.1) 100%)}
+  .hero-inner{padding-block:2rem}
+  .gallery-grid{grid-auto-rows:150px;grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr;gap:1.6rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}}
+
+.ed .filebtn{position:relative}
 </style>
 </head>
-
-<!-- ===================== HTML ===================== -->
 <body>
-<header>
-  <div class="wrap nav">
-    <a href="#home" class="logo">পাহাড়ী <span>এগ্রো</span></a>
-    <button class="burger" id="burger" aria-label="মেনু">☰</button>
-    <nav><ul id="menu">
-      <li><a href="#home">হোম</a></li>
-      <li><a href="#about">আমাদের সম্পর্কে</a></li>
-      <li><a href="#store">পণ্যসমূহ</a></li>
-      <li><a href="#contact">যোগাযোগ</a></li>
-    </ul></nav>
+<a class="skip-link" href="#main">মূল অংশে যান</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-mark" viewBox="0 0 120 100">
+    <circle cx="74" cy="42" r="13" fill="#E0A526"/>
+    <g stroke="#E0A526" stroke-width="3" stroke-linecap="round"><line x1="74" y1="19" x2="74" y2="13"/><line x1="56" y1="26" x2="52" y2="21"/><line x1="92" y1="26" x2="96" y2="21"/><line x1="102" y1="42" x2="108" y2="42"/></g>
+    <path d="M52 80 L88 36 L118 80 Z" fill="var(--logo-back)"/>
+    <path d="M8 80 L42 34 L58 54 L66 46 L92 80 Z" fill="var(--logo-front)"/>
+    <path d="M42 34 L50 44 L45 42 L41 47 L36 41 Z" fill="var(--logo-snow)" opacity=".9"/>
+    <path d="M4 79 C 30 101, 88 101, 117 79 C 92 90, 36 90, 4 79 Z" fill="var(--logo-front)"/>
+    <path d="M8 84 C 2 70, 9 58, 24 53 C 27 66, 22 79, 8 84 Z" fill="var(--logo-back)"/>
+    <path d="M8 84 C 12 72, 17 62, 24 53" stroke="var(--logo-snow)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 4 4 9.5 4 16c0 1.2.2 2.2.6 3C6 14 9 11 13 9c-3 2.6-5 5.8-6 10 1.2.7 2.6 1 4 1 6.6 0 9-6 9-16z" fill="currentColor"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-8M12 13c0-4-3-6-7-6 0 4 3 6 7 6zm0 0c0-4 3-7 7-7 0 4-3 7-7 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 3l2.6 2 3.2-.2 1 3 2.6 1.8-1 3 1 3-2.6 1.8-1 3-3.2-.2L12 21l-2.6-2-3.2.2-1-3L2.6 14.4l1-3-1-3L5.2 6.6l1-3 3.2.2z" fill="currentColor" opacity=".18"/><path d="M8.5 12.2l2.6 2.6 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M2 19l7-12 4 6.5 2.5-3.5L22 19z" fill="currentColor"/><circle cx="17.5" cy="6" r="2" fill="#E0A526"/></symbol>
+  <symbol id="i-hands" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" fill="currentColor"/><circle cx="17" cy="9" r="2.5" fill="currentColor" opacity=".7"/><path d="M2.5 19c0-3.5 2.5-6 5.5-6s5.5 2.5 5.5 6zM14 19c0-2.6 1.5-4.5 3.5-4.5S21.5 16.4 21.5 19z" fill="currentColor"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5l2.3-.5 1.7 4-1.8 1.3c.9 1.8 2.4 3.3 4.2 4.2l1.3-1.8 4 1.7-.5 2.3c-.2 1-1.1 1.7-2.1 1.6C9.8 16 5 11.2 4.9 5.6c-.1-1 .6-1.9 1.7-2.1z" fill="currentColor"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z" fill="currentColor"/><circle cx="12" cy="9.5" r="2.5" fill="#fff"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H7.2V13H10v8z" fill="currentColor"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z" fill="currentColor"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 1.8a7.2 7.2 0 1 1-3.7 13.4l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 0 1 12 4.8z" fill="currentColor"/><path d="M9 8.2c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.2.8 2.6.7 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4.2-.4c.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.6-.4z" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#home" aria-label="হোম">
+      <svg class="logo" viewBox="0 0 120 100" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="brand-text"><span class="brand-bn" data-f="brandName">পাহাড়ী এগ্রো</span><span class="brand-en">PAHARI AGRO</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="মেনু খুলুন"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+    <nav id="primary-nav" class="primary-nav" aria-label="প্রধান মেনু">
+      <ul>
+        <li><a href="#home" class="is-active">হোম</a></li>
+        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+        <li><a href="#products">আমাদের পণ্য</a></li>
+        <li data-nav-gallery><a href="#gallery">গ্যালারি</a></li>
+        <li><a href="#contact">যোগাযোগ</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<main>
-  <section class="hero" id="home" style="padding-top:30px">
-    <div class="wrap">
-      <div class="slider">
-        <button class="arrow prev" id="prev" aria-label="আগের">‹</button>
-        <div class="pimg" id="sImg"><button class="buy" id="sBuy">এখনই কিনুন</button></div>
-        <div class="ptext">
-          <h1 id="sName">শুকনা মরিচ</h1>
-          <h2 id="sSlogan">ঝালে ভরপুর</h2>
-          <p id="sDesc">পাহাড়ী মরিচ রোদে শুকিয়ে বাছাই করা, ঝাল ও সুগন্ধে ভরা।</p>
-          <div class="price" id="sPrice">৳৪৫০ / কেজি</div>
-        </div>
-        <button class="arrow next" id="next" aria-label="পরের">›</button>
+<main id="main">
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero-bg" id="hero-bg" role="img" aria-label="সবুজ পাহাড় ও কৃষিজমির দৃশ্য"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="hero-title"><span data-f="heroTitle1">প্রকৃতির ছোঁয়ায়,</span><span class="t2" data-f="heroTitle2">কৃষির নতুন সম্ভাবনা</span></h1>
+        <p class="hero-text" data-f="heroDesc">পাহাড় ও সমতলের প্রাকৃতিক সম্পদ নিয়ে নিরাপদ, স্বাস্থ্যকর ও মানসম্মত কৃষিপণ্য আপনার জন্য।</p>
+        <a class="btn btn-primary" href="#products" id="hero-cta"><svg aria-hidden="true"><use href="#i-leaf"/></svg><span>আমাদের পণ্য দেখুন</span><svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="dots" id="dots"></div>
     </div>
   </section>
 
-  <section id="store">
+  <section class="values-strip" aria-label="আমাদের মূল্যবোধ">
     <div class="wrap">
-      <h2 class="title">আমাদের পণ্যসমূহ</h2>
-      <div class="grid" id="grid"></div>
+      <ul class="values-list">
+        <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-leaf"/></svg></span><div><strong>প্রাকৃতিক ও নিরাপদ</strong><span>প্রকৃতির কাছাকাছি থেকে সংগৃহীত পণ্য</span></div></li>
+        <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-sprout"/></svg></span><div><strong>কৃষকের প্রতি সহযোগিতা</strong><span>স্থানীয় কৃষককে এগিয়ে নেওয়ার উদ্যোগ</span></div></li>
+        <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-badge"/></svg></span><div><strong>মানসম্মত কৃষিপণ্য</strong><span>নির্বাচিত ও যত্নে উপস্থাপিত</span></div></li>
+        <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-mountain"/></svg></span><div><strong>পাহাড় ও সমতলের বৈচিত্র্য</strong><span>দুই অঞ্চলের নানা ফসল ও পণ্য</span></div></li>
+      </ul>
     </div>
   </section>
 
-  <section class="about" id="about">
+  <section class="section" id="products" aria-labelledby="products-title">
     <div class="wrap">
-      <h2 class="title">মালিক পরিচিতি</h2>
-      <div class="box">
-        <div class="avatar" id="avatar">আ</div>
+      <div class="section-head">
         <div>
-          <h3 id="ownerName">আপনার নাম</h3>
-          <p id="ownerBio">এখানে নিজের সম্পর্কে ২-৩ লাইন লিখুন: কীভাবে শুরু করেছেন, পাহাড়ের কৃষকদের কাছ থেকে কীভাবে খাঁটি পণ্য সংগ্রহ করেন।</p>
+          <h2 class="section-title" id="products-title"><svg class="title-leaf" aria-hidden="true"><use href="#i-leaf"/></svg>আমাদের পণ্য</h2>
+          <p class="section-sub">প্রকৃতির সেরা উপহার, আপনার জন্য</p>
         </div>
+        <button class="btn btn-soft" type="button" id="more-products-btn" hidden><span>আরও পণ্য দেখুন</span><svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <figure class="owner-photo"><img id="owner-photo" alt="মালিকের ছবি" width="800" height="640"></figure>
+      <div class="about-copy">
+        <h2 class="section-title" id="about-title"><svg class="title-leaf" aria-hidden="true"><use href="#i-leaf"/></svg>আমাদের সম্পর্কে</h2>
+        <p class="about-lead" data-f="aboutText"></p>
+        <div class="owner-card" id="owner-card">
+          <p class="owner-name" data-f="ownerName"></p>
+          <p class="owner-role">মালিক, <span data-f="brandName">পাহাড়ী এগ্রো</span></p>
+          <p class="owner-bio" data-f="ownerBio"></p>
+        </div>
+      </div>
+      <div class="mission-panel">
+        <ul class="mission-list">
+          <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-sprout"/></svg></span><div><strong>আমাদের লক্ষ্য</strong><span>প্রকৃতি ও মানুষের মধ্যে সুস্থ ও টেকসই সম্পর্ক গড়ে তোলা।</span></div></li>
+          <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-hands"/></svg></span><div><strong>কৃষকের পাশে</strong><span>নির্বাচিত কৃষিপণ্য সংগ্রহের মাধ্যমে স্থানীয় কৃষকের সঙ্গে কাজ করা।</span></div></li>
+          <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-badge"/></svg></span><div><strong>মান ও যত্ন</strong><span>পণ্য মানসম্মতভাবে উপস্থাপন করা।</span></div></li>
+          <li><span class="value-icon"><svg aria-hidden="true"><use href="#i-mountain"/></svg></span><div><strong>আমাদের দৃষ্টিভঙ্গি</strong><span>পাহাড় ও সমতলের প্রাকৃতিক সম্পদ সবার কাছে পৌঁছে দেওয়া।</span></div></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <section class="section" id="gallery" aria-labelledby="gallery-title">
     <div class="wrap">
-      <h2 class="title">যোগাযোগ করুন</h2>
-      <p id="addr">রাঙ্গামাটি, পার্বত্য চট্টগ্রাম, বাংলাদেশ</p>
-      <a class="btn wa" id="waBtn" target="_blank" rel="noopener" href="https://wa.me/8801700000000">হোয়াটসঅ্যাপে মেসেজ করুন</a>
-      <a class="btn" id="callBtn" href="tel:+8801700000000">কল করুন</a>
+      <div class="section-head"><div>
+        <h2 class="section-title" id="gallery-title"><svg class="title-leaf" aria-hidden="true"><use href="#i-leaf"/></svg>গ্যালারি</h2>
+        <p class="section-sub">খামার, ফসল, কৃষক আর প্রকৃতির কিছু মুহূর্ত</p>
+      </div></div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="section-head"><div>
+        <h2 class="section-title" id="contact-title"><svg class="title-leaf" aria-hidden="true"><use href="#i-leaf"/></svg>যোগাযোগ</h2>
+        <p class="section-sub">আমাদের সঙ্গে কথা বলুন</p>
+      </div></div>
+      <div class="contact-grid" id="contact-grid">
+        <div class="contact-box"><ul class="contact-list" id="contact-list"></ul><div class="contact-actions" id="contact-actions"></div></div>
+        <div class="social-box" id="social-box"><p class="social-title">আমাদের সঙ্গে যুক্ত থাকুন</p><div class="social-row" id="social-row"></div></div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer>© <span id="yr">২০২৬</span> পাহাড়ী এগ্রো। সর্বস্বত্ব সংরক্ষিত।</footer>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="#home" style="color:#fff" aria-label="উপরে যান">
+        <svg class="logo" viewBox="0 0 120 100" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand-text"><span class="brand-bn" data-f="brandName">পাহাড়ী এগ্রো</span><span class="brand-en">PAHARI AGRO</span></span>
+      </a>
+      <p class="footer-tagline" data-f="tagline">প্রকৃতির ছোঁয়ায়, কৃষির নতুন সম্ভাবনা</p>
+    </div>
+    <nav class="footer-col" aria-label="দ্রুত লিংক">
+      <h2>দ্রুত লিংক</h2>
+      <ul class="footer-links">
+        <li><a href="#home">হোম</a></li><li><a href="#about">আমাদের সম্পর্কে</a></li><li><a href="#products">আমাদের পণ্য</a></li><li data-nav-gallery><a href="#gallery">গ্যালারি</a></li><li><a href="#contact">যোগাযোগ</a></li>
+      </ul>
+    </nav>
+    <div class="footer-col"><h2>যোগাযোগ</h2><ul class="footer-contact" id="footer-contact"></ul></div>
+    <div class="footer-col" id="footer-social-col"><h2>আমাদের সাথে যুক্ত থাকুন</h2><div class="social-row social-row-light" id="footer-social"></div></div>
+  </div>
+  <div class="footer-bottom"><div class="wrap"><p>© <span id="year">2026</span> <span data-f="brandName">পাহাড়ী এগ্রো</span>। সর্বস্বত্ব সংরক্ষিত।</p></div></div>
+</footer>
 
-<script type="application/json" id="site-data">{"phone":"8801732072578","address":"আদমদীঘি, বগুড়া , বাংলাদেশ","owner":"মাহফুজ আলম ","bio":"আমি মাহফুজ আলম , একজন স্বপ্নবাজ ও প্রযুক্তিপ্রেমী মানুষ। নতুন কিছু শেখা, সৃজনশীল চিন্তাভাবনা এবং প্রযুক্তির মাধ্যমে বাস্তবসম্মত সমস্যার সমাধান করতে আমি ভালোবাসি। প্রতিনিয়ত নিজের দক্ষতা উন্নত করা এবং নতুন অভিজ্ঞতা অর্জন করাই আমার লক্ষ্য। আমি বিশ্বাস করি, পরিশ্রম, সৃজনশীলতা ও শেখার আগ্রহই সাফল্যের মূল চাবিকাঠি।","products":[{"name":"পাহাড়ী খাঁটি মধু","price":850,"unit":"কেজি","slogan":"পাহাড়ের ফুলের নির্যাস","desc":"পার্বত্য অঞ্চলের বন থেকে সংগৃহীত ১০০% খাঁটি মধু। কোনো ভেজাল বা চিনি নেই।","emoji":"🍯","color":"#FFE082"},{"name":"হলুদ গুঁড়া","price":320,"unit":"৫০০ গ্রাম","slogan":"রঙে ও স্বাদে অতুলনীয়","desc":"পাহাড়ী জমির কাঁচা হলুদ থেকে তৈরি, রোদে শুকানো ও ঘরে পেষা।","emoji":"🌿","color":"#FFCC80"},{"name":"পাহাড়ী আদা","price":180,"unit":"কেজি","slogan":"ঝাঁঝালো ও তাজা","desc":"রাসায়নিক ছাড়া চাষ করা মোটা ও রসালো আদা।","emoji":"🫚","color":"#D7CCC8"},{"name":"আনারস","price":60,"unit":"পিস","slogan":"মিষ্টি ও রসে ভরা","desc":"পাহাড়ের রোদে পাকা সুমিষ্ট আনারস, সরাসরি বাগান থেকে।","emoji":"🍍","color":"#FFF59D"},{"name":"কলা","price":80,"unit":"ডজন","slogan":"পাহাড়ের সেরা স্বাদ","desc":"প্রাকৃতিকভাবে পাকা, কার্বাইডমুক্ত সুস্বাদু কলা।","emoji":"🍌","color":"#FFF9C4"},{"name":"শুকনা মরিচ","price":450,"unit":"কেজি","slogan":"ঝালে ভরপুর","desc":"পাহাড়ী মরিচ রোদে শুকিয়ে বাছাই করা, ঝাল ও সুগন্ধে ভরা।","emoji":"🌶️","color":"#FFAB91"}]}</script>
-<script>
-const SITE = JSON.parse(document.getElementById("site-data").textContent);
+<dialog class="lightbox" id="lightbox" aria-label="ছবি দেখুন">
+  <button type="button" class="lightbox-close" aria-label="বন্ধ করুন">×</button>
+  <img id="lightbox-img" src="" alt="">
+  <p id="lightbox-caption"></p>
+</dialog>
 
-/* ---- নিচের কোড বদলানোর দরকার নেই ---- */
-const $ = id => document.getElementById(id);
-const bn = n => Number(n).toLocaleString("bn-BD");
-const orderLink = p => "https://wa.me/" + SITE.phone + "?text=" +
-  encodeURIComponent("আসসালামু আলাইকুম, আমি \"" + p.name + "\" অর্ডার করতে চাই।");
+<script type="application/json" id="site-data">{"brandName": "পাহাড়ী এগ্রো", "tagline": "প্রকৃতির ছোঁয়ায়, কৃষির নতুন সম্ভাবনা", "heroTitle1": "প্রকৃতির ছোঁয়ায়,", "heroTitle2": "কৃষির নতুন সম্ভাবনা", "heroDesc": "পাহাড় ও সমতলের প্রাকৃতিক সম্পদ নিয়ে নিরাপদ, স্বাস্থ্যকর ও মানসম্মত কৃষিপণ্য আপনার জন্য।", "heroImage": "", "aboutText": "পাহাড়ী এগ্রো একটি কৃষিভিত্তিক উদ্যোগ, যার লক্ষ্য প্রকৃতি ও মানুষের মধ্যে একটি সুস্থ ও টেকসই সম্পর্ক গড়ে তোলা। আমরা কৃষকদের কাছ থেকে নির্বাচিত কৃষিপণ্য সংগ্রহ এবং মানসম্মতভাবে উপস্থাপনের মাধ্যমে গ্রাহকদের কাছে পৌঁছে দিতে চাই।", "ownerName": "শুভ মন্ডল", "ownerBio": "আমি শুভ মণ্ডল, একজন স্বপ্নবাজ ও প্রযুক্তিপ্রেমী মানুষ। নতুন কিছু শেখা, সৃজনশীল চিন্তাভাবনা এবং প্রযুক্তির মাধ্যমে বাস্তবসম্মত সমস্যার সমাধান করতে আমি ভালোবাসি। প্রতিনিয়ত নিজের দক্ষতা উন্নত করা এবং নতুন অভিজ্ঞতা অর্জন করাই আমার লক্ষ্য। আমি বিশ্বাস করি, পরিশ্রম, সৃজনশীলতা ও শেখার আগ্রহই সাফল্যের মূল চাবিকাঠি।", "ownerPhoto": "", "phone": "8801312477163", "whatsapp": "8801312477163", "email": "", "address": "আদমদীঘি, বগুড়া, বাংলাদেশ", "social": {"facebook": "", "youtube": "", "instagram": ""}, "products": [{"id": "p1", "name": "পাহাড়ী খাঁটি মধু", "category": "মধু", "desc": "পার্বত্য অঞ্চলের বন থেকে সংগৃহীত ১০০% খাঁটি মধু। কোনো ভেজাল বা চিনি নেই।", "emoji": "🍯", "color": "#FFE082", "image": "", "active": true}, {"id": "p2", "name": "হলুদ গুঁড়া", "category": "মসলা", "desc": "পাহাড়ী জমির কাঁচা হলুদ থেকে তৈরি, রোদে শুকানো ও ঘরে পেষা।", "emoji": "🌿", "color": "#FFCC80", "image": "", "active": true}, {"id": "p3", "name": "পাহাড়ী আদা", "category": "মসলা", "desc": "রাসায়নিক ছাড়া চাষ করা মোটা ও রসালো আদা।", "emoji": "🫚", "color": "#D7CCC8", "image": "", "active": true}, {"id": "p4", "name": "আনারস", "category": "ফল", "desc": "পাহাড়ের রোদে পাকা সুমিষ্ট আনারস, সরাসরি বাগান থেকে।", "emoji": "🍍", "color": "#FFF59D", "image": "", "active": true}, {"id": "p5", "name": "কলা", "category": "ফল", "desc": "প্রাকৃতিকভাবে পাকা, কার্বাইডমুক্ত সুস্বাদু কলা।", "emoji": "🍌", "color": "#FFF9C4", "image": "", "active": true}, {"id": "p6", "name": "শুকনা মরিচ", "category": "মসলা", "desc": "পাহাড়ী মরিচ রোদে শুকিয়ে বাছাই করা, ঝাল ও সুগন্ধে ভরা।", "emoji": "🌶️", "color": "#FFAB91", "image": "", "active": true}], "gallery": []}</script>
+<script id="app-js">(function () {
+"use strict";
 
-function visual(el, p){          // ছবি থাকলে ছবি, না থাকলে ইমোজি
-  el.style.background = p.color;
-  if (p.image) { el.insertAdjacentHTML("afterbegin", '<img src="'+p.image+'" alt="'+p.name+'">'); }
-  else { el.insertAdjacentText("afterbegin", p.emoji); }
+/* ===== পেজের মূল উৎস (সেভ করার সময় এখান থেকেই নতুন পেজ বানানো হয়) ===== */
+const SKELETON = (function () {
+  const b = document.body.cloneNode(true);
+  b.querySelectorAll("script, template, [data-edit-ui]").forEach(function (n) { n.remove(); });
+  return b.innerHTML;
+})();
+const APP_JS = document.getElementById("app-js").textContent;
+const APP_CSS = document.getElementById("app-css").textContent;
+const HEAD_STR = "<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n<title>পাহাড়ী এগ্রো | Pahari Agro</title>\n<meta name=\"description\" content=\"পাহাড়ী এগ্রো — পাহাড় ও সমতলের প্রাকৃতিক সম্পদ নিয়ে নির্বাচিত ও মানসম্মত কৃষিপণ্যের প্রদর্শনী।\">\n<meta name=\"color-scheme\" content=\"light dark\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;800&display=swap\" rel=\"stylesheet\">\n";
+const HERO_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1600 700\" preserveAspectRatio=\"xMidYMid slice\">\n  <defs>\n    <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#FFF0C8\"/><stop offset=\".5\" stop-color=\"#F7EBC8\"/><stop offset=\"1\" stop-color=\"#DCEAD2\"/>\n    </linearGradient>\n    <radialGradient id=\"glow\" cx=\"1030\" cy=\"170\" r=\"420\" gradientUnits=\"userSpaceOnUse\">\n      <stop offset=\"0\" stop-color=\"#FFE7A0\" stop-opacity=\".95\"/><stop offset=\"1\" stop-color=\"#FFE7A0\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <linearGradient id=\"mist\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\".6\" stop-color=\"#fff\" stop-opacity=\".55\"/><stop offset=\"1\" stop-color=\"#fff\" stop-opacity=\"0\"/>\n    </linearGradient>\n  </defs>\n  <rect width=\"1600\" height=\"700\" fill=\"url(#sky)\"/>\n  <rect width=\"1600\" height=\"700\" fill=\"url(#glow)\"/>\n  <circle cx=\"1030\" cy=\"170\" r=\"46\" fill=\"#F2BE45\"/>\n  <!-- far hills -->\n  <path d=\"M0 330 C140 262 250 300 390 268 S650 200 800 252 S1080 214 1230 190 S1470 236 1600 206 L1600 700 L0 700Z\" fill=\"#B9D4AF\"/>\n  <!-- mist -->\n  <rect y=\"250\" width=\"1600\" height=\"120\" fill=\"url(#mist)\"/>\n  <!-- mid hills -->\n  <path d=\"M0 400 C180 330 330 372 520 332 S860 280 1040 322 S1380 300 1600 340 L1600 700 L0 700Z\" fill=\"#86B87D\"/>\n  <path d=\"M0 450 C220 400 420 430 640 396 S1000 372 1220 408 S1500 400 1600 420 L1600 700 L0 700Z\" fill=\"#5FA166\"/>\n  <!-- village -->\n  <g>\n    <rect x=\"860\" y=\"404\" width=\"34\" height=\"20\" fill=\"#E8D5B0\"/><path d=\"M854 405 L877 389 L900 405Z\" fill=\"#B5543A\"/>\n    <rect x=\"930\" y=\"414\" width=\"28\" height=\"18\" fill=\"#EBD9B6\"/><path d=\"M925 415 L944 401 L963 415Z\" fill=\"#A4452E\"/>\n    <rect x=\"1180\" y=\"396\" width=\"36\" height=\"22\" fill=\"#E8D5B0\"/><path d=\"M1174 397 L1198 380 L1222 397Z\" fill=\"#B5543A\"/>\n  </g>\n  <!-- trees -->\n  <g fill=\"#2F7A3B\">\n    <circle cx=\"700\" cy=\"410\" r=\"20\"/><circle cx=\"730\" cy=\"416\" r=\"16\"/><circle cx=\"1090\" cy=\"396\" r=\"22\"/><circle cx=\"1130\" cy=\"404\" r=\"16\"/>\n    <circle cx=\"560\" cy=\"428\" r=\"18\"/><circle cx=\"1320\" cy=\"418\" r=\"20\"/>\n  </g>\n  <!-- palms -->\n  <g stroke=\"#6B4A2B\" stroke-width=\"5\" stroke-linecap=\"round\"><line x1=\"980\" y1=\"470\" x2=\"976\" y2=\"410\"/><line x1=\"1400\" y1=\"500\" x2=\"1394\" y2=\"436\"/></g>\n  <g stroke=\"#2F7A3B\" stroke-width=\"4\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M976 410 q-22 -4 -34 10 M976 410 q22 -6 36 6 M976 410 q-8 -20 -26 -22 M976 410 q10 -20 28 -20\"/>\n    <path d=\"M1394 436 q-24 -4 -38 12 M1394 436 q24 -6 40 8 M1394 436 q-8 -22 -28 -24 M1394 436 q12 -22 30 -22\"/>\n  </g>\n  <!-- near fields -->\n  <path d=\"M0 520 C260 470 520 500 800 470 S1300 460 1600 490 L1600 700 L0 700Z\" fill=\"#3F8B4A\"/>\n  <path d=\"M0 580 C300 540 600 570 900 548 S1380 540 1600 560 L1600 700 L0 700Z\" fill=\"#2F7A3B\"/>\n  <g stroke=\"#58A862\" stroke-width=\"3\" opacity=\".7\" fill=\"none\">\n    <path d=\"M0 600 C300 566 600 592 900 572 S1380 566 1600 584\"/>\n    <path d=\"M0 628 C300 598 600 620 900 604 S1380 598 1600 612\"/>\n    <path d=\"M0 658 C300 632 600 650 900 636 S1380 632 1600 642\"/>\n  </g>\n  <!-- foreground leaves, left -->\n  <g fill=\"#1F6A33\">\n    <path d=\"M0 140 C60 120 140 150 170 230 C100 220 40 190 0 140Z\"/>\n    <path d=\"M0 260 C70 250 150 290 168 370 C90 350 30 320 0 260Z\" fill=\"#2F7A3B\"/>\n  </g>\n  <!-- foreground leaves, right -->\n  <g fill=\"#1F6A33\">\n    <path d=\"M1600 60 C1520 50 1440 90 1420 170 C1500 160 1570 130 1600 60Z\"/>\n    <path d=\"M1600 190 C1530 190 1460 230 1450 310 C1530 296 1580 260 1600 190Z\" fill=\"#2F7A3B\"/>\n  </g>\n</svg>\n";
+const OWNER_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 640\" preserveAspectRatio=\"xMidYMid slice\">\n  <defs><linearGradient id=\"b\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#CFE5B8\"/><stop offset=\"1\" stop-color=\"#5FA166\"/></linearGradient></defs>\n  <rect width=\"800\" height=\"640\" fill=\"url(#b)\"/>\n  <path d=\"M0 470 C160 400 300 440 440 400 S700 380 800 410 L800 640 L0 640Z\" fill=\"#3F8B4A\" opacity=\".55\"/>\n  <circle cx=\"400\" cy=\"250\" r=\"92\" fill=\"#FBF6E9\"/>\n  <path d=\"M190 640 C190 470 290 420 400 420 S610 470 610 640Z\" fill=\"#FBF6E9\"/>\n</svg>\n";
+
+/* ===== ছোট সহায়ক ফাংশন ===== */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+const NS = "http://www.w3.org/2000/svg";
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const k in (attrs || {})) {
+    const v = attrs[k];
+    if (v === false || v == null) continue;
+    if (k === "class") e.className = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  kids.flat().forEach(function (c) {
+    if (c == null || c === false) return;
+    e.append(c.nodeType ? c : document.createTextNode(String(c)));
+  });
+  return e;
+}
+function icon(id) {
+  const s = document.createElementNS(NS, "svg");
+  s.setAttribute("aria-hidden", "true");
+  const u = document.createElementNS(NS, "use");
+  u.setAttribute("href", "#" + id);
+  s.append(u);
+  return s;
+}
+const digits = (s) => String(s || "").replace(/\D/g, "");
+const okImg = (s) => typeof s === "string" && /^data:image\/(png|jpe?g|webp|gif);base64,/.test(s);
+const okUrl = (s) => typeof s === "string" && /^https:\/\//i.test(s);
+const okColor = (s) => (typeof s === "string" && /^#[0-9a-f]{3,8}$/i.test(s)) ? s : "#C8E6C9";
+const svgUri = (svg) => "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+const uid = () => (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : "id" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+const clone = (o) => JSON.parse(JSON.stringify(o));
+const waLink = (num, text) => "https://wa.me/" + digits(num) + (text ? "?text=" + encodeURIComponent(text) : "");
+
+/* ===== সাইটের তথ্য ===== */
+const DEF = {
+  brandName: "পাহাড়ী এগ্রো", tagline: "প্রকৃতির ছোঁয়ায়, কৃষির নতুন সম্ভাবনা",
+  heroTitle1: "প্রকৃতির ছোঁয়ায়,", heroTitle2: "কৃষির নতুন সম্ভাবনা",
+  heroDesc: "পাহাড় ও সমতলের প্রাকৃতিক সম্পদ নিয়ে নিরাপদ, স্বাস্থ্যকর ও মানসম্মত কৃষিপণ্য আপনার জন্য।",
+  heroImage: "", aboutText: "", ownerName: "", ownerBio: "", ownerPhoto: "",
+  phone: "", whatsapp: "", email: "", address: "",
+  social: { facebook: "", youtube: "", instagram: "" }, products: [], gallery: []
+};
+let SITE;
+try { SITE = Object.assign({}, DEF, JSON.parse($("#site-data").textContent)); }
+catch (e) { SITE = clone(DEF); }
+SITE.social = Object.assign({}, DEF.social, SITE.social || {});
+if (!Array.isArray(SITE.products)) SITE.products = [];
+if (!Array.isArray(SITE.gallery)) SITE.gallery = [];
+
+let IS_OWNER = false;
+let showAllProducts = false;
+const PRODUCT_LIMIT = 6;
+
+/* ===== রেন্ডার ===== */
+function renderTexts() {
+  document.title = (SITE.brandName || "পাহাড়ী এগ্রো") + " | Pahari Agro";
+  $$("[data-f]").forEach(function (n) { n.textContent = SITE[n.dataset.f] == null ? "" : SITE[n.dataset.f]; });
+}
+function renderHero() {
+  const src = okImg(SITE.heroImage) ? SITE.heroImage : svgUri(HERO_SVG);
+  $("#hero-bg").style.backgroundImage = 'url("' + src + '")';
+}
+function productCard(p) {
+  const media = h("div", { class: "product-media" });
+  if (okImg(p.image)) media.append(h("img", { src: p.image, alt: p.name, loading: "lazy" }));
+  else { media.style.background = okColor(p.color); media.append(h("span", { class: "emoji", "aria-hidden": "true" }, p.emoji || "🌱")); }
+  const body = h("div", { class: "product-body" });
+  if (p.category) body.append(h("span", { class: "chip" }, p.category));
+  body.append(h("h3", {}, p.name));
+  if (p.desc) body.append(h("p", {}, p.desc));
+  const num = SITE.whatsapp || SITE.phone;
+  if (digits(num)) {
+    body.append(h("a", { class: "btn btn-wa btn-sm", href: waLink(num, "আসসালামু আলাইকুম, আমি \"" + p.name + "\" সম্পর্কে জানতে চাই।"), target: "_blank", rel: "noopener" }, icon("i-whatsapp"), "WhatsApp-এ জানতে চাই"));
+  }
+  return h("article", { class: "product-card" }, media, body);
+}
+function renderProducts() {
+  const grid = $("#product-grid"), more = $("#more-products-btn");
+  grid.replaceChildren();
+  const list = SITE.products.filter(function (p) { return p && p.active !== false && p.name; });
+  if (!list.length) {
+    grid.append(h("div", { class: "state-box" }, "এখনো কোনো পণ্য যোগ করা হয়নি। শীঘ্রই আসছে!"));
+    more.hidden = true; return;
+  }
+  (showAllProducts ? list : list.slice(0, PRODUCT_LIMIT)).forEach(function (p) { grid.append(productCard(p)); });
+  more.hidden = showAllProducts || list.length <= PRODUCT_LIMIT;
+}
+function renderAbout() {
+  $("#owner-photo").src = okImg(SITE.ownerPhoto) ? SITE.ownerPhoto : svgUri(OWNER_SVG);
+  $("#owner-card").hidden = !(SITE.ownerName || SITE.ownerBio);
+}
+function renderGallery() {
+  const grid = $("#gallery-grid");
+  grid.replaceChildren();
+  const items = SITE.gallery.filter(function (g) { return g && okImg(g.image); });
+  const visible = items.length > 0 || IS_OWNER;
+  $("#gallery").hidden = !visible;
+  $$("[data-nav-gallery]").forEach(function (n) { n.hidden = !visible; });
+  if (!items.length) {
+    if (IS_OWNER) { grid.style.display = "block"; grid.append(h("div", { class: "state-box" }, "গ্যালারিতে এখনো ছবি নেই। ✎ সম্পাদনা চেপে ছবি যোগ করুন (শুধু আপনি এটা দেখছেন)।")); }
+    return;
+  }
+  grid.style.display = "";
+  items.forEach(function (g) {
+    const fig = h("figure", { class: "g-item" },
+      h("button", { type: "button", class: "g-btn", "aria-label": "ছবিটি বড় করে দেখুন" }, h("img", { src: g.image, alt: g.caption || "গ্যালারির ছবি", loading: "lazy" })),
+      g.caption ? h("figcaption", {}, g.caption) : null);
+    grid.append(fig);
+  });
+}
+function contactRow(ic, label, valueEl) {
+  return h("li", {}, h("span", { class: "value-icon" }, icon(ic)), h("div", {}, h("strong", {}, label), valueEl));
+}
+function socialLinks(extraClass) {
+  const out = [];
+  ["facebook", "youtube", "instagram"].forEach(function (k) {
+    if (okUrl(SITE.social[k])) out.push(h("a", { class: "social", "data-s": k, href: SITE.social[k], target: "_blank", rel: "noopener noreferrer", "aria-label": k === "facebook" ? "Facebook" : k === "youtube" ? "YouTube" : "Instagram" }, icon("i-" + k)));
+  });
+  const wa = SITE.whatsapp || SITE.phone;
+  if (digits(wa)) out.push(h("a", { class: "social", style: "background:#128c4a", href: waLink(wa), target: "_blank", rel: "noopener noreferrer", "aria-label": "WhatsApp" }, icon("i-whatsapp")));
+  return out;
+}
+function renderContact() {
+  const list = $("#contact-list"), actions = $("#contact-actions"), row = $("#social-row"), fc = $("#footer-contact"), fs = $("#footer-social");
+  [list, actions, row, fc, fs].forEach(function (n) { n.replaceChildren(); });
+  const phone = digits(SITE.phone);
+  if (phone) {
+    list.append(contactRow("i-phone", "ফোন", h("a", { href: "tel:+" + phone }, "+" + phone)));
+    fc.append(h("li", {}, icon("i-phone"), h("span", {}, "+" + phone)));
+  }
+  if (SITE.email) {
+    list.append(contactRow("i-mail", "ইমেইল", h("a", { href: "mailto:" + SITE.email }, SITE.email)));
+    fc.append(h("li", {}, icon("i-mail"), h("span", {}, SITE.email)));
+  }
+  if (SITE.address) {
+    list.append(contactRow("i-pin", "ঠিকানা", h("span", {}, SITE.address)));
+    fc.append(h("li", {}, icon("i-pin"), h("span", {}, SITE.address)));
+  }
+  const wa = SITE.whatsapp || SITE.phone;
+  if (digits(wa)) actions.append(h("a", { class: "btn btn-wa", href: waLink(wa), target: "_blank", rel: "noopener" }, icon("i-whatsapp"), "WhatsApp-এ মেসেজ করুন"));
+  if (phone) actions.append(h("a", { class: "btn btn-primary", href: "tel:+" + phone }, icon("i-phone"), "কল করুন"));
+  if (!list.children.length && !actions.children.length) list.append(h("li", {}, h("div", {}, "যোগাযোগের তথ্য শীঘ্রই যুক্ত হবে।")));
+  if (!fc.children.length) fc.append(h("li", {}, h("span", {}, "যোগাযোগের তথ্য শীঘ্রই যুক্ত হবে।")));
+  const links = socialLinks();
+  links.forEach(function (a) { row.append(a); });
+  socialLinks().forEach(function (a) { fs.append(a); });
+  $("#social-box").hidden = !links.length;
+  $("#contact-grid").classList.toggle("single", !links.length);
+  $("#footer-social-col").hidden = !links.length;
+}
+function renderAll() {
+  renderTexts(); renderHero(); renderProducts(); renderAbout(); renderGallery(); renderContact();
+  $("#year").textContent = new Date().getFullYear();
+}
+renderAll();
+
+/* ===== মেনু, হাইলাইট, লাইটবক্স ===== */
+(function () {
+  const header = $(".site-header"), toggle = $(".nav-toggle"), nav = $("#primary-nav");
+  function setMenu(open) {
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "মেনু বন্ধ করুন" : "মেনু খুলুন");
+    nav.classList.toggle("is-open", open);
+  }
+  toggle.addEventListener("click", function () { setMenu(toggle.getAttribute("aria-expanded") !== "true"); });
+  nav.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  const onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
+  onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+
+  const links = $$("a[href^='#']", nav);
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("href") === "#" + en.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    links.forEach(function (a) { const s = $(a.getAttribute("href")); if (s) io.observe(s); });
+  }
+  $("#more-products-btn").addEventListener("click", function () { showAllProducts = true; renderProducts(); });
+
+  const box = $("#lightbox"), boxImg = $("#lightbox-img"), boxCap = $("#lightbox-caption");
+  $("#gallery-grid").addEventListener("click", function (e) {
+    const fig = e.target.closest(".g-item"); if (!fig) return;
+    const img = fig.querySelector("img");
+    boxImg.src = img.src; boxImg.alt = img.alt || "";
+    boxCap.textContent = (fig.querySelector("figcaption") || {}).textContent || "";
+    if (typeof box.showModal === "function") box.showModal();
+  });
+  $(".lightbox-close").addEventListener("click", function () { box.close(); });
+  box.addEventListener("click", function (e) { if (e.target === box) box.close(); });
+})();
+
+/* ===== মালিকের সম্পাদনা ===== */
+function buildDoc(data) {
+  const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  return "<!DOCTYPE html>\n<html lang=\"bn\">\n<head>\n" + HEAD_STR + "<style id=\"app-css\">" + APP_CSS + "</style>\n</head>\n<body>\n" +
+    SKELETON + "\n<script type=\"application/json\" id=\"site-data\">" + json + "<\/script>\n<script id=\"app-js\">" + APP_JS + "<\/script>\n</body>\n</html>";
 }
 
-/* Slider */
-let cur = 0, timer;
-const dots = $("dots");
-SITE.products.forEach((_, i) => {
-  const b = document.createElement("button");
-  b.setAttribute("aria-label", "স্লাইড " + (i+1));
-  b.onclick = () => { show(i); restart(); };
-  dots.appendChild(b);
-});
-function show(i){
-  cur = (i + SITE.products.length) % SITE.products.length;
-  const p = SITE.products[cur], img = $("sImg"), buy = $("sBuy");
-  [...img.childNodes].forEach(n => { if (n !== buy) n.remove(); });
-  visual(img, p);
-  $("sName").textContent = p.name;
-  $("sSlogan").textContent = p.slogan;
-  $("sDesc").textContent = p.desc;
-  $("sPrice").textContent = "৳" + bn(p.price) + " / " + p.unit;
-  buy.onclick = () => window.open(orderLink(p), "_blank");
-  [...dots.children].forEach((d, k) => d.classList.toggle("on", k === cur));
+async function loadBitmap(file) {
+  if (window.createImageBitmap) { try { return await createImageBitmap(file); } catch (e) { /* নিচে বিকল্প */ } }
+  return await new Promise(function (res, rej) {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () { URL.revokeObjectURL(url); res(img); };
+    img.onerror = function () { URL.revokeObjectURL(url); rej(new Error("bad image")); };
+    img.src = url;
+  });
 }
-function restart(){ clearInterval(timer); timer = setInterval(() => show(cur+1), 5000); }
-$("prev").onclick = () => { show(cur-1); restart(); };
-$("next").onclick = () => { show(cur+1); restart(); };
-show(0); restart();
+async function compress(file, maxW, maxLen) {
+  if (!file || !/^image\//.test(file.type)) throw new Error("not image");
+  const bmp = await loadBitmap(file);
+  const w0 = bmp.width, h0 = bmp.height, scale = Math.min(1, maxW / w0);
+  const c = document.createElement("canvas");
+  c.width = Math.max(1, Math.round(w0 * scale)); c.height = Math.max(1, Math.round(h0 * scale));
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  let mime = "image/webp", q = 0.82, out = c.toDataURL(mime, q);
+  if (out.indexOf("data:image/webp") !== 0) { mime = "image/jpeg"; out = c.toDataURL(mime, q); }
+  while (out.length > maxLen && q > 0.4) { q -= 0.1; out = c.toDataURL(mime, q); }
+  return out;
+}
 
-/* Product grid */
-SITE.products.forEach(p => {
-  const c = document.createElement("article");
-  c.className = "card";
-  c.innerHTML = '<div class="pimg"></div><div class="body"><h3></h3><p></p><div class="row"><b></b><button>কিনুন</button></div></div>';
-  visual(c.querySelector(".pimg"), p);
-  c.querySelector("h3").textContent = p.name;
-  c.querySelector("p").textContent = p.desc;
-  c.querySelector("b").textContent = "৳" + bn(p.price) + " / " + p.unit;
-  c.querySelector("button").onclick = () => window.open(orderLink(p), "_blank");
-  $("grid").appendChild(c);
-});
+async function initEditor() {
+  let user = null, art = null;
+  try {
+    if (!window.claude || !window.claude.use) return;
+    user = await window.claude.use("user");
+    art = await window.claude.use("artifact");
+  } catch (e) { return; }
+  if (!user || !art || !user.isOwner()) return;
 
-/* Owner, contact, menu */
-$("ownerName").textContent = SITE.owner;
-$("ownerBio").textContent = SITE.bio;
-$("avatar").textContent = SITE.owner.trim().charAt(0);
-$("addr").textContent = SITE.address;
-$("waBtn").href = "https://wa.me/" + SITE.phone;
-$("callBtn").href = "tel:+" + SITE.phone;
-$("yr").textContent = bn(new Date().getFullYear()).replace(/,/g, "");
-$("burger").onclick = () => $("menu").classList.toggle("open");
-$("menu").onclick = e => { if (e.target.tagName === "A") $("menu").classList.remove("open"); };
+  IS_OWNER = true; renderGallery();
+  const fab = h("button", { class: "fab", type: "button", "data-edit-ui": "1" }, "✎ সম্পাদনা");
+  const dlg = h("dialog", { class: "editor", "data-edit-ui": "1", "aria-label": "সাইট সম্পাদনা" });
+  document.body.append(fab, dlg);
+  let draft, msgEl, saveBtn;
 
-/* ===== শুধু মালিকের জন্য এডিটর ===== */
-(async()=>{
-  let user=null,art=null;
-  try{user=await claude.use("user");art=await claude.use("artifact");}catch(e){}
-  if(!user||!art||!user.isOwner())return;
-  const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const fab=document.createElement("button");fab.className="fab";fab.textContent="✎ সম্পাদনা";fab.dataset.editUi="1";
-  const dlg=document.createElement("dialog");dlg.dataset.editUi="1";
-  document.body.append(fab,dlg);
-  const inp=(id,l,v)=>`<label>${l}<input id="${id}" value="${esc(v)}"></label>`;
-  const prow=p=>`<div class="prow" data-color="${esc(p.color||"#C8E6C9")}" data-image="${esc(p.image||"")}"><input class="w" placeholder="পণ্যের নাম" value="${esc(p.name)}"><input placeholder="দাম (সংখ্যায়)" inputmode="numeric" value="${esc(p.price)}"><input placeholder="একক (কেজি/পিস)" value="${esc(p.unit)}"><input class="w" placeholder="স্লোগান" value="${esc(p.slogan)}"><input class="w" placeholder="বিবরণ" value="${esc(p.desc)}"><input placeholder="ইমোজি" value="${esc(p.emoji)}"><button type="button" class="sm" data-rm>মুছে ফেলুন</button></div>`;
-  function open(){
-    dlg.innerHTML=`<div class="ed"><h2>সাইট সম্পাদনা</h2>
-    ${inp("e_phone","হোয়াটসঅ্যাপ নম্বর (দেশের কোডসহ, যেমন 8801700000000)",SITE.phone)}${inp("e_addr","ঠিকানা",SITE.address)}
-    <b>পণ্যসমূহ</b><div id="plist">${SITE.products.map(prow).join("")}</div><button type="button" class="sm" id="addp">+ নতুন পণ্য</button>
-    <b>মালিক পরিচিতি</b>${inp("e_owner","আপনার নাম",SITE.owner)}<label>সংক্ষিপ্ত পরিচয়<textarea id="e_bio" rows="3">${esc(SITE.bio)}</textarea></label>
-    <p id="msg"></p><div class="bar"><button id="save">সেভ ও পাবলিশ</button><button class="x" id="cancel">বাতিল</button></div></div>`;
+  function setMsg(t, kind) { if (!msgEl) return; msgEl.textContent = t || ""; msgEl.className = "ed-msg" + (kind ? " " + kind : ""); }
+
+  function textField(label, obj, key, o) {
+    o = o || {};
+    const inp = o.area ? h("textarea", { rows: 3 }) : h("input", { type: o.type || "text", placeholder: o.ph || "" });
+    inp.value = obj[key] == null ? "" : obj[key];
+    inp.addEventListener("input", function () { obj[key] = inp.value; });
+    return h("label", {}, label, inp, o.hint ? h("span", { class: "hint" }, o.hint) : null);
+  }
+  function checkbox(label, obj, key) {
+    const c = h("input", { type: "checkbox" }); c.checked = obj[key] !== false;
+    c.addEventListener("change", function () { obj[key] = c.checked; });
+    return h("label", { class: "chk" }, c, label);
+  }
+  function confirmBtn(text, onYes) {
+    const b = h("button", { type: "button", class: "danger" }, text); let armed = false, t;
+    b.addEventListener("click", function () {
+      if (!armed) { armed = true; b.classList.add("sure"); b.textContent = "নিশ্চিত? আবার চাপুন"; t = setTimeout(function () { armed = false; b.classList.remove("sure"); b.textContent = text; }, 4000); }
+      else { clearTimeout(t); onYes(); }
+    });
+    return b;
+  }
+  function imgPicker(label, get, set, o) {
+    o = o || {};
+    const thumb = h("div", { class: "thumb" });
+    const paint = function () { thumb.replaceChildren(); const v = get(); if (okImg(v)) thumb.append(h("img", { src: v, alt: "" })); else thumb.textContent = o.emoji || "🖼️"; };
+    const fileIn = h("input", { type: "file", accept: "image/*" });
+    const pick = h("label", { class: "filebtn" }, "ছবি বাছুন", fileIn);
+    const rm = h("button", { type: "button", class: "danger" }, "ছবি সরান");
+    fileIn.addEventListener("change", async function () {
+      const f = fileIn.files && fileIn.files[0]; if (!f) return;
+      setMsg("ছবি প্রসেস হচ্ছে…");
+      try { set(await compress(f, o.maxW || 900, o.maxLen || 450000)); paint(); setMsg("ছবি যোগ হয়েছে। সবশেষে “সেভ ও পাবলিশ” চাপুন।", "ok"); }
+      catch (e) { setMsg("ছবিটি পড়া যায়নি। অন্য একটি ছবি বেছে নিন।", "err"); }
+      fileIn.value = "";
+    });
+    rm.addEventListener("click", function () { set(""); paint(); });
+    paint();
+    return h("div", {}, h("div", { class: "hint" }, label + (o.hint ? " — " + o.hint : "")), h("div", { class: "pick" }, thumb, pick, rm));
+  }
+  function details(title, open, content) {
+    const d = h("details", {}, h("summary", {}, title), content); if (open) d.open = true; return d;
+  }
+
+  function productsSection() {
+    const wrap = h("div", { class: "sec" }), list = h("div", { style: "display:grid;gap:.7rem" });
+    function paint() {
+      list.replaceChildren();
+      if (!draft.products.length) list.append(h("p", { class: "hint" }, "এখনো কোনো পণ্য নেই। নিচের বাটন চেপে যোগ করুন।"));
+      draft.products.forEach(function (p, i) {
+        const up = h("button", { type: "button" }, "↑ উপরে"), down = h("button", { type: "button" }, "↓ নিচে");
+        up.addEventListener("click", function () { if (i > 0) { const t = draft.products[i - 1]; draft.products[i - 1] = p; draft.products[i] = t; paint(); } });
+        down.addEventListener("click", function () { if (i < draft.products.length - 1) { const t = draft.products[i + 1]; draft.products[i + 1] = p; draft.products[i] = t; paint(); } });
+        list.append(h("div", { class: "row" },
+          imgPicker("পণ্যের ছবি", function () { return p.image; }, function (v) { p.image = v; }, { maxW: 800, emoji: p.emoji || "🌱" }),
+          textField("পণ্যের নাম (বাংলায়)", p, "name"),
+          textField("ক্যাটাগরি (যেমন: ফল, মসলা, মধু)", p, "category"),
+          textField("ইমোজি (ছবি না থাকলে এটি দেখাবে)", p, "emoji"),
+          textField("সংক্ষিপ্ত বিবরণ", p, "desc", { area: true }),
+          checkbox("সাইটে দেখানো হবে", p, "active"),
+          h("div", { class: "row-actions" }, up, down, confirmBtn("মুছে ফেলুন", function () { draft.products.splice(i, 1); paint(); }))));
+      });
+    }
+    const add = h("button", { type: "button", class: "ghost" }, "+ নতুন পণ্য যোগ করুন");
+    add.addEventListener("click", function () {
+      draft.products.push({ id: uid(), name: "", category: "", desc: "", emoji: "🌱", color: "#C8E6C9", image: "", active: true });
+      paint(); const rows = $$(".row", list); if (rows.length) rows[rows.length - 1].scrollIntoView({ block: "center" });
+    });
+    paint(); wrap.append(list, add); return wrap;
+  }
+
+  function gallerySection() {
+    const wrap = h("div", { class: "sec" }), grid = h("div", { class: "g-edit" });
+    function paint() {
+      grid.replaceChildren();
+      if (!draft.gallery.length) grid.append(h("p", { class: "hint" }, "এখনো কোনো ছবি নেই।"));
+      draft.gallery.forEach(function (g, i) {
+        grid.append(h("div", { class: "g-card" }, h("img", { src: okImg(g.image) ? g.image : "", alt: "" }),
+          textField("ক্যাপশন", g, "caption"),
+          confirmBtn("মুছুন", function () { draft.gallery.splice(i, 1); paint(); })));
+      });
+    }
+    const fileIn = h("input", { type: "file", accept: "image/*", multiple: true });
+    const pick = h("label", { class: "filebtn" }, "+ ছবি যোগ করুন", fileIn);
+    fileIn.addEventListener("change", async function () {
+      const files = [...(fileIn.files || [])]; if (!files.length) return;
+      setMsg("ছবি প্রসেস হচ্ছে…"); let n = 0;
+      for (const f of files) { try { draft.gallery.push({ id: uid(), image: await compress(f, 1000, 400000), caption: "" }); n++; } catch (e) { /* বাদ */ } }
+      paint(); fileIn.value = "";
+      setMsg(n ? n + "টি ছবি যোগ হয়েছে। সবশেষে “সেভ ও পাবলিশ” চাপুন।" : "ছবি পড়া যায়নি।", n ? "ok" : "err");
+    });
+    paint(); wrap.append(grid, pick); return wrap;
+  }
+
+  function openEditor() {
+    draft = clone(SITE);
+    const texts = h("div", { class: "sec" },
+      textField("ব্র্যান্ডের নাম", draft, "brandName"),
+      textField("ট্যাগলাইন (ফুটারে)", draft, "tagline"),
+      textField("হিরো শিরোনাম — প্রথম লাইন", draft, "heroTitle1"),
+      textField("হিরো শিরোনাম — দ্বিতীয় লাইন", draft, "heroTitle2"),
+      textField("হিরো ব্যানারের লেখা", draft, "heroDesc", { area: true }),
+      imgPicker("হিরো ব্যানারের ছবি", function () { return draft.heroImage; }, function (v) { draft.heroImage = v; }, { maxW: 1600, maxLen: 650000, hint: "চওড়া ছবি ভালো" }),
+      textField("আমাদের সম্পর্কে (ব্র্যান্ড পরিচিতি)", draft, "aboutText", { area: true }));
+    const owner = h("div", { class: "sec" },
+      textField("মালিকের নাম", draft, "ownerName"),
+      textField("সংক্ষিপ্ত পরিচয়", draft, "ownerBio", { area: true }),
+      imgPicker("মালিকের ছবি", function () { return draft.ownerPhoto; }, function (v) { draft.ownerPhoto = v; }, { maxW: 900, emoji: "🙂" }));
+    const contact = h("div", { class: "sec" },
+      textField("ফোন নম্বর (দেশের কোডসহ, যেমন 8801XXXXXXXXX)", draft, "phone", { type: "tel" }),
+      textField("WhatsApp নম্বর (ফাঁকা রাখলে ফোন নম্বরই ব্যবহার হবে)", draft, "whatsapp", { type: "tel" }),
+      textField("ইমেইল", draft, "email", { type: "email" }),
+      textField("ঠিকানা", draft, "address", { area: true }),
+      textField("Facebook পেজের লিংক", draft.social, "facebook", { type: "url", ph: "https://facebook.com/..." }),
+      textField("YouTube চ্যানেলের লিংক", draft.social, "youtube", { type: "url", ph: "https://youtube.com/..." }),
+      textField("Instagram লিংক", draft.social, "instagram", { type: "url", ph: "https://instagram.com/..." }));
+    msgEl = h("p", { class: "ed-msg", role: "status" });
+    saveBtn = h("button", { type: "button", class: "save" }, "সেভ ও পাবলিশ");
+    const cancel = h("button", { type: "button" }, "বাতিল");
+    saveBtn.addEventListener("click", save);
+    cancel.addEventListener("click", function () { dlg.close(); });
+    dlg.replaceChildren(h("div", { class: "ed" },
+      h("div", { class: "ed-body" }, h("h2", {}, "সাইট সম্পাদনা"),
+        details("পণ্যসমূহ", true, productsSection()),
+        details("সাইটের লেখা ও হিরো ব্যানার", false, texts),
+        details("মালিকের পরিচিতি", false, owner),
+        details("গ্যালারি", false, gallerySection()),
+        details("যোগাযোগ ও সোশ্যাল লিংক", false, contact)),
+      h("div", { class: "ed-bar" }, msgEl, saveBtn, cancel)));
     dlg.showModal();
-    $("addp").onclick=()=>$("plist").insertAdjacentHTML("beforeend",prow({name:"",slogan:"",desc:"",price:"",unit:"",emoji:"🌱"}));
-    $("plist").onclick=e=>{if(e.target.dataset.rm!==undefined)e.target.closest(".prow").remove()};
-    $("cancel").onclick=()=>dlg.close();
-    $("save").onclick=save;
   }
-  async function save(){
-    const prods=[...document.querySelectorAll("#plist .prow")].map(r=>{const v=r.querySelectorAll("input");const o={name:v[0].value.trim(),price:Number(v[1].value.replace(/[^0-9.]/g,""))||0,unit:v[2].value.trim(),slogan:v[3].value.trim(),desc:v[4].value.trim(),emoji:v[5].value.trim()||"🌱",color:r.dataset.color};if(r.dataset.image)o.image=r.dataset.image;return o}).filter(p=>p.name);
-    const D={phone:$("e_phone").value.replace(/[^0-9]/g,""),address:$("e_addr").value.trim(),owner:$("e_owner").value.trim()||"মালিক",bio:$("e_bio").value.trim(),products:prods.length?prods:SITE.products};
-    $("msg").textContent="পাবলিশ হচ্ছে...";
-    const c=document.documentElement.cloneNode(true);
-    c.querySelectorAll("[data-edit-ui]").forEach(n=>n.remove());
-    c.querySelector("#grid").innerHTML="";c.querySelector("#dots").innerHTML="";
-    const si=c.querySelector("#sImg");si.removeAttribute("style");si.innerHTML='<button class="buy" id="sBuy">এখনই কিনুন</button>';
-    c.querySelector("#site-data").textContent=JSON.stringify(D).replace(/</g,"\\u003c");
-    try{await art.publish("<!DOCTYPE html>\n"+c.outerHTML);}
-    catch(e){$("msg").textContent="পাবলিশ করা যায়নি: "+(e&&e.message||e.code||"আবার চেষ্টা করুন");}
+  fab.addEventListener("click", openEditor);
+
+  function validate() {
+    const d = draft;
+    d.phone = digits(d.phone); d.whatsapp = digits(d.whatsapp);
+    if (d.phone && (d.phone.length < 10 || d.phone.length > 15)) return "ফোন নম্বর ঠিক নেই। দেশের কোডসহ লিখুন, যেমন 8801XXXXXXXXX।";
+    if (d.whatsapp && (d.whatsapp.length < 10 || d.whatsapp.length > 15)) return "WhatsApp নম্বর ঠিক নেই। দেশের কোডসহ লিখুন।";
+    if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) return "ইমেইল ঠিকানা ঠিক নেই।";
+    for (const k of ["facebook", "youtube", "instagram"]) {
+      const v = (d.social[k] || "").trim();
+      if (v && !okUrl(v)) return "সোশ্যাল লিংক https:// দিয়ে শুরু হতে হবে (" + k + ")।";
+      d.social[k] = v;
+    }
+    const kept = [];
+    for (const p of d.products) {
+      p.name = (p.name || "").trim();
+      if (!p.name) { if ((p.desc || "").trim() || okImg(p.image)) return "প্রতিটি পণ্যের নাম লিখতে হবে।"; continue; }
+      p.category = (p.category || "").trim(); p.desc = (p.desc || "").trim(); p.emoji = (p.emoji || "").trim() || "🌱";
+      kept.push(p);
+    }
+    d.products = kept;
+    ["brandName", "tagline", "heroTitle1", "heroTitle2", "heroDesc", "aboutText", "ownerName", "ownerBio", "email", "address"].forEach(function (k) { d[k] = (d[k] || "").trim(); });
+    if (!d.brandName) return "ব্র্যান্ডের নাম ফাঁকা রাখা যাবে না।";
+    d.gallery = d.gallery.filter(function (g) { return okImg(g.image); }).map(function (g) { return { id: g.id || uid(), image: g.image, caption: (g.caption || "").trim() }; });
+    return "";
   }
-  fab.onclick=open;
+  async function save() {
+    const err = validate(); if (err) { setMsg(err, "err"); return; }
+    const html = buildDoc(draft);
+    if (html.length > 14000000) { setMsg("ছবি অনেক বেশি হয়ে গেছে। কয়েকটি ছবি মুছে আবার চেষ্টা করুন।", "err"); return; }
+    saveBtn.disabled = true; setMsg("পাবলিশ হচ্ছে… একটু অপেক্ষা করুন।");
+    try { await art.publish(html); setMsg("✅ পাবলিশ হয়েছে! পেজ নতুন করে লোড হচ্ছে…", "ok"); }
+    catch (e) {
+      saveBtn.disabled = false;
+      const c = e && e.code;
+      setMsg(c === "not_writer" || c === "not_granted" || c === "consent_required" ? "পাবলিশ করার অনুমতি নেই।" :
+        c === "too_large" ? "ছবি অনেক বেশি হয়ে গেছে। কয়েকটি ছবি মুছে আবার চেষ্টা করুন।" :
+        c === "rate_limited" ? "খুব দ্রুত পাবলিশ হচ্ছে। একটু পরে আবার চেষ্টা করুন।" :
+        c === "conflict" ? "সাইট এইমাত্র বদলেছে। পেজ নতুন করে লোড হচ্ছে, তারপর আবার সম্পাদনা করুন।" :
+        "পাবলিশ করা যায়নি। ইন্টারনেট দেখে আবার চেষ্টা করুন।", "err");
+    }
+  }
+}
+initEditor();
 })();
 </script>
-
-
-</body></html>
+</body>
+</html>
